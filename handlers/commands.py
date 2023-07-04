@@ -2,6 +2,7 @@ from aiogram import types, Dispatcher
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot, dp
 import random, os
+from handlers.homework7 import openai_bot
 
 
 # @dp.message_handler(commands=['start'])
@@ -46,8 +47,11 @@ async def quiz_1(message: types.Message) -> None:
         reply_markup=markup
     )
 
+async def bot_chat(message: types.Message):
+    await message.answer(openai_bot(message))
 
 def register_handlers_commands(dp: Dispatcher):
     dp.register_message_handler(start_command, commands=['start'])
     dp.register_message_handler(quiz_1, commands=['quiz'])
     dp.register_message_handler(mem_photo, commands=['mem'])
+    dp.register_message_handler(bot_chat, commands=['chat'])
