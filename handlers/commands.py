@@ -19,7 +19,6 @@ async def mem_photo(message: types.Message):
     await message.answer_photo(photo)
 
 
-
 # @dp.message_handler(commands=['quiz'])
 async def quiz_1(message: types.Message) -> None:
     markup = InlineKeyboardMarkup()
@@ -46,7 +45,6 @@ async def quiz_1(message: types.Message) -> None:
         open_period=10,
         reply_markup=markup
     )
-
 
 
 def register_handlers_commands(dp: Dispatcher):

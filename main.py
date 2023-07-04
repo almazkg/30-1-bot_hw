@@ -1,8 +1,9 @@
 from aiogram import executor, types
 import logging
 from config import dp
-from handlers import commands, callback, admin
+from handlers import commands, callback, admin, fsm_mentor
 
+fsm_mentor.register_handlers_fsm(dp)
 commands.register_handlers_commands(dp)
 callback.register_handlers_callback(dp)
 admin.register_handlers_admin(dp)
