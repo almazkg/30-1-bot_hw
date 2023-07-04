@@ -1,7 +1,7 @@
 from aiogram import executor, types
 import logging
 from config import dp
-from handlers import commands, callback, admin, fsm_mentor
+from handlers import commands, callback, admin, fsm_mentor, schedule
 from database.bot_db import sql_create
 
 fsm_mentor.register_handlers_fsm(dp)
@@ -10,7 +10,8 @@ callback.register_handlers_callback(dp)
 admin.register_handlers_admin(dp)
 
 async def on_startup(dp):
-    sql_create()
+    sql_create(),
+    await schedule.set_scheduler()
 
 
 @dp.message_handler()
